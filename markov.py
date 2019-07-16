@@ -9,10 +9,11 @@ def open_and_read_file(file_path):
     Takes a string that is a file path, opens the file, and turns
     the file's contents as one string of text.
     """
+    file_data = open(file_path)
+    contains  = file_data.read()
 
-    # your code goes here
 
-    return "Contents of your file as one long string"
+    return contains
 
 
 def make_chains(text_string):
@@ -42,7 +43,17 @@ def make_chains(text_string):
 
     chains = {}
 
-    # your code goes here
+    words = text_string.split()
+
+    for i in range(len(words) - 2):  # Iterate over each bigram, skipping last.
+
+        if (words[i], words[i + 1]) in chains:
+            chains[(words[i], words[i + 1])].append(words[i + 2])
+
+        else:
+            chains[(words[i], words[i + 1])] = [words[i + 2]]
+
+    print(chains)
 
     return chains
 
