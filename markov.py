@@ -61,8 +61,8 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
-    key = choice(list(chains.keys()))
-    words.extend(list(key))
+    key = choice(list(chains))
+    words.extend(key)
 
     while key in chains:
         random_next_word = choice(chains[key])
