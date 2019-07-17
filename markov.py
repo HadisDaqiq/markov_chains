@@ -53,7 +53,6 @@ def make_chains(text_string):
         else:
             chains[(words[i], words[i + 1])] = [words[i + 2]]
 
-    print(chains)
 
     return chains
 
@@ -62,8 +61,13 @@ def make_text(chains):
     """Return text from chains."""
 
     words = []
+    key = choice(list(chains.keys()))
+    words.extend(list(key))
 
-    # your code goes here
+    while key in chains:
+        random_next_word = choice(chains[key])
+        words.append(random_next_word)
+        key = (key[1], random_next_word)
 
     return " ".join(words)
 
